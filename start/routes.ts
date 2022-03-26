@@ -20,12 +20,20 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
+// Cara 1
+// Route.group(() => {
+//   Route.group(() => {
+//     Route.post('products', 'ProductsController.store')
+//     Route.get('products', 'ProductsController.index')
+//     Route.get('products/:id', 'ProductsController.show')
+//     Route.put('products/:id', 'ProductsController.update')
+//     Route.delete('products/:id', 'ProductsController.destroy')
+//   }).prefix('v1')
+// }).prefix('api')
+
+// Cara 2
 Route.group(() => {
   Route.group(() => {
-    Route.post('products', 'ProductsController.store')
-    Route.get('products', 'ProductsController.index')
-    Route.get('products/:id', 'ProductsController.show')
-    Route.put('products/:id', 'ProductsController.update')
-    Route.delete('products/:id', 'ProductsController.destroy')
+    Route.resource('products', 'ProductsController')
   }).prefix('v1')
 }).prefix('api')
