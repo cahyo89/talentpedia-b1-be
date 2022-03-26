@@ -13,7 +13,7 @@ export default class Transactions extends BaseSchema {
         .references('product_id')
         .inTable('products')
         .onDelete('CASCADE')
-      table.integer('transaction_qty', 3).defaultTo(0).notNullable()
+      table.integer('transaction_qty', 3).defaultTo(0).unsigned().notNullable()
       table.integer('user_id').unsigned().references('user_id').inTable('users').onDelete('CASCADE')
       table.timestamps(true, true)
     })
